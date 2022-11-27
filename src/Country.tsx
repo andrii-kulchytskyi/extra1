@@ -37,7 +37,7 @@ export const Country = (props: CountryPropsType) => {
                 setRUBLS
             }>RUBLS
             </button>
-            <City data={"передаем денюжки в город"}/>
+            <City data={props.data}/>
         </div>
     );
 };
