@@ -22,14 +22,17 @@ let defaultMoney: MoneyType[] = [  // типизируем
 
 // типизируем на входе и выходе
 export const moneyFilter = (money: MoneyType[], filterValue: BanknotsType): MoneyType[] => {
-    return money.filter(el => el.banknotes ===  filterValue)
+    if (filterValue === "All") {
+        return defaultMoney;
+    }
+    return money.filter(el => el.banknotes === filterValue)
     //если пришел filter со значением 'All', то возвращаем все банкноты
     //return money.filter... ну да, придется фильтровать
 }
 
 function App() {
     // убираем заглушки в типизации и вставляем в качестве инициализационного значения defaultMoney
-    const [money, setMoney] = useState<MoneyType[]>([])
+    const [money, setMoney] = useState<MoneyType[]>(defaultMoney)
     const [filter, setFilter] = useState<BanknotsType>('All')   // по умолчанию указываем все банкноты
 
     // а вот сейчас притормаживаем. И вдумчиво: константа filteredMoney получает результат функции moneyFilter
